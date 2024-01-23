@@ -18,6 +18,45 @@ public class Main {
             System.out.println("Player: " + player + ":");
 
             // Stuff should go here, probably
+            String s = "N";
+            if (remainingMegaPiece[player-1]>0){
+                System.out.println("Use MegaPiece? (Y/N)?");
+                s = input.nextLine();
+            }
+
+            if (s.equals("y") || s.equals("Y")){
+
+                System.out.println("Enter the column you would like to place your MegaPiece at.");
+                int c = input.nextInt();
+                input.nextLine();
+                if (c<=1 || c>=BOARDY){
+                    System.out.println("Not a valid placement.");
+                    continue;
+                }
+                MegaPiece p = new MegaPiece(c,player,board);
+                if (p.getRow()<0){
+                    System.out.println("Not a valid placement.");
+                    continue;
+                }
+                board.placePiece(p);
+                remainingMegaPiece[player-1]--;
+            }else{
+
+                System.out.println("Enter the column you would like to place your Piece at.");
+                int c = input.nextInt();
+                input.nextLine();
+                if (c<1 || c>BOARDY){
+                    System.out.println("Not a valid placement.");
+                    continue;
+                }
+                Piece p = new Piece(c, player, board);
+                if (p.getRow()<0){
+                    System.out.println("Not a valid placement.");
+                    continue;
+                }
+                board.placePiece(p);
+
+            }
 
             if (board.checkForWin(player)) {
                 System.out.println("player: " + player + " has won!");

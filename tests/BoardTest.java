@@ -25,6 +25,7 @@ class BoardTest {
         Board board = new Board(5, 5);
         Piece piece = new Piece(2, 1, board);
         board.placePiece(piece);
+        System.out.println(piece.getRow());
         Piece piece2 = new Piece(2, 2, board);
         board.placePiece(piece2);
         Piece piece3 = new Piece(1, 1, board);
@@ -80,11 +81,11 @@ class BoardTest {
     @Test
     public void testCheckForWinNoWin() {
         Board board = new Board(9, 9);
-        board.placePiece(new Piece(0, 0, board));
-        board.placePiece(new Piece(0, 1, board));
-        board.placePiece(new Piece(0, 2, board));
-        board.placePiece(new Piece(0, 3, board));
-        board.placePiece(new Piece(0, 4, board));
+        board.placePiece(new Piece(1, 0, board));
+        board.placePiece(new Piece(1, 1, board));
+        board.placePiece(new Piece(1, 2, board));
+        board.placePiece(new Piece(1, 3, board));
+        board.placePiece(new Piece(1, 4, board));
 
         assertFalse(board.checkForWin(1));  // No player should win
         assertFalse(board.checkForWin(2));
